@@ -89,6 +89,10 @@ module Geminabox
       headers 'X-Powered-By' => "geminabox #{Geminabox::VERSION}"
     end
 
+    after do
+      Geminabox.layout_wrapper.call(response, env)
+    end
+
     get '/' do
       @gems = load_gems
       @index_gems = index_gems(@gems)

@@ -19,6 +19,7 @@ module Geminabox
   require_relative 'geminabox/version'
   require_relative 'geminabox/proxy'
   require_relative 'geminabox/http_adapter'
+  require_relative 'geminabox/nil_layout_wrapper'
 
   def self.geminabox_path(file)
     File.join File.dirname(__FILE__), 'geminabox', file
@@ -54,7 +55,8 @@ module Geminabox
       :ruby_gems_url,
       :bundler_ruby_gems_url,
       :allow_upload,
-      :on_gem_received
+      :on_gem_received,
+      :layout_wrapper
     )
 
     def set_defaults(defaults)
@@ -90,7 +92,8 @@ module Geminabox
     ruby_gems_url:                  'https://rubygems.org/',
     bundler_ruby_gems_url:          'https://bundler.rubygems.org/',
     allow_upload:                   true,
-    on_gem_received:                nil
+    on_gem_received:                nil,
+    layout_wrapper:                 Geminabox::NilLayoutWrapper.new
   )
 
 end
