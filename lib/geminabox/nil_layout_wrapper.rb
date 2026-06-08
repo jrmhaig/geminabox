@@ -1,5 +1,5 @@
 module Geminabox
   class NilLayoutWrapper
-    def call(response, env); end
+    def call(_response, _env); end
   end
 end
